@@ -2,7 +2,6 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import SplitBackground from '@/components/ui/SplitBackground';
-import { ScribbleAccent } from '@/components/ui/ScribbleAccent';
 import { Tag } from '@/components/ui/Tag';
 
 export default function AboutPage() {
@@ -49,10 +48,6 @@ export default function AboutPage() {
                   <span>Status</span>
                   <span className="text-[var(--electric)] font-bold">SECURE</span>
                 </div>
-              </div>
-              
-              <div className="absolute -top-12 -right-12 w-[160px] h-[160px] z-20 opacity-80 mix-blend-multiply">
-                <ScribbleAccent />
               </div>
             </div>
           </div>
