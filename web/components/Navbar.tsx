@@ -24,9 +24,9 @@ export default function Navbar() {
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           <div className="flex items-center gap-8 text-[14px] font-[600] uppercase tracking-[0.02em] text-[var(--ink)]">
-            <Link href="#" className="hover:text-[var(--electric)] transition-colors">DOCS</Link>
+            <Link href="/docs" className="hover:text-[var(--electric)] transition-colors">DOCS</Link>
             <Link href="/vault" className="hover:text-[var(--electric)] transition-colors">VAULT</Link>
-            <Link href="#" className="hover:text-[var(--electric)] transition-colors">ABOUT</Link>
+            <Link href="/about" className="hover:text-[var(--electric)] transition-colors">ABOUT</Link>
           </div>
           
           {wallet.connected ? (
@@ -90,9 +90,9 @@ export default function Navbar() {
           </div>
           
           <div className="flex flex-col gap-6 text-[32px] font-display uppercase tracking-[-0.01em] text-[var(--ink)]">
-            <Link href="#" onClick={() => setMobileMenuOpen(false)}>DOCS</Link>
+            <Link href="/docs" onClick={() => setMobileMenuOpen(false)}>DOCS</Link>
             <Link href="/vault" onClick={() => setMobileMenuOpen(false)}>VAULT</Link>
-            <Link href="#" onClick={() => setMobileMenuOpen(false)}>ABOUT</Link>
+            <Link href="/about" onClick={() => setMobileMenuOpen(false)}>ABOUT</Link>
           </div>
 
           {wallet.connected && (

@@ -7,6 +7,7 @@ import { RevealForm } from '@/components/RevealForm';
 import { Tag } from '@/components/ui/Tag';
 import { Button } from '@/components/ui/Button';
 import { useWallet } from '@/lib/wallet-context';
+import { getVaultClient, revealSecret } from '@/lib/contract-client';
 
 export default function VaultPage() {
   const wallet = useWallet();
@@ -18,22 +19,26 @@ export default function VaultPage() {
   const handleReveal = async (secret: string, nonce: string) => {
     setRevealError(undefined);
 
-    // In a real flow, this would:
-    // 1. Call the contract's reveal() circuit via the generated TypeScript API
-    // 2. The circuit runs locally, generating a ZK proof
-    // 3. The proof is submitted as a transaction via the wallet
-    // For now, we simulate with a delay
+    try {
+      if (!secret || !nonce) {
+        throw new Error("Missing secret or nonce");
+      }
 
-    await new Promise(r => setTimeout(r, 2500));
+      // Initialize the mock client
+      const client = getVaultClient(wallet.walletApi, 'mock_contract_address');
+      
+      // Simulate encoding the string nonce to bytes
+      const encoder = new TextEncoder();
+      const nonceBytes = encoder.encode(nonce.padEnd(32, '0')).slice(0, 32);
 
-    // Simulated contract logic — in production this would be:
-    // const client = getVaultClient(wallet.walletApi, contractAddress);
-    // await revealSecret(client, BigInt(secret), nonceBytes);
-    if (secret && nonce) {
+      // Call the contract API (which is currently mocked)
+      await revealSecret(client, BigInt(secret), nonceBytes);
+
       setStatus('REVEALED');
       setRevealedValue(secret);
-    } else {
-      setRevealError("These values don't match the on-chain commitment. Nothing was revealed.");
+    } catch (e: any) {
+      console.error(e);
+      setRevealError("These values don't match the on-chain commitment or are invalid. Nothing was revealed.");
     }
   };
 
