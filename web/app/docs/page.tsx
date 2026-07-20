@@ -49,7 +49,6 @@ export default function DocsPage() {
               The chain only ever receives a zero-knowledge proof that "the witness values hash to the stored commitment" — never the values themselves, until you explicitly call <code>disclose()</code> on reveal.
             </p>
           </section>
-
           <section className="mb-12">
             <h2 className="font-display text-[24px] uppercase tracking-[-0.01em] text-[var(--ink)] mb-4 border-b border-[var(--border)] pb-4">
               3. Toolchain & Setup
@@ -68,9 +67,7 @@ export default function DocsPage() {
               * Note: The Midnight GHCR registry requires authentication. If you are unauthorized, the DApp uses a built-in simulation layer to mock the SDK's zero-knowledge proof generation delays and transaction hashes so you can still test the UI.
             </p>
           </section>
-
         </article>
-
       </div>
     </main>
   );
